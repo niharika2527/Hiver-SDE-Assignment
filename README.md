@@ -138,7 +138,6 @@ Hiver-SDE-Assignment/
 └── .gitignore
 </pre>
 
-
 <h2>Setup</h2>
 <hr>
 
@@ -153,80 +152,106 @@ Windows:
 ```powershell
 python -m venv .venv
 .venv\Scripts\activate
+```
 
 macOS/Linux:
 
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
+```
 
 <strong>2. Install dependencies</strong>
 
+```bash
 pip install -r requirements.txt
+```
 
 The processed datasets and trained intent model are already included in the repository, so no preprocessing or model training is required to run the main agent.
 
-<h2>API Key</h2> <hr>
+<h2>API Key</h2>
+<hr>
 
-The response-generation and LLM-judge components use the Groq API with the open-weight openai/gpt-oss-20b model.
+The response-generation and LLM-judge components use the Groq API with the open-weight `openai/gpt-oss-20b` model.
 
 Set your own Groq API key as an environment variable before running the components that require the API.
 
 <strong>Windows PowerShell</strong>
 
+```powershell
 $env:GROQ_API_KEY="your_api_key"
+```
 
 <strong>macOS/Linux</strong>
 
+```bash
 export GROQ_API_KEY="your_api_key"
+```
 
 The API key is not included in the repository.
 
-<h2>Run the Agent</h2> <hr>
+<h2>Run the Agent</h2>
+<hr>
 
 From the repository root, run:
 
+```bash
 python src/apple_support_agent.py
+```
 
 Enter a customer message when prompted.
 
 <strong>The agent displays:</strong>
 
-Predicted intent
-Classifier confidence
-Top 3 historical AppleSupport conversations and their similarity scores
-Generated customer-facing reply
-Escalation decision
-Reason for the escalation or automated handling
+- Predicted intent
+- Classifier confidence
+- Top 3 historical AppleSupport conversations and their similarity scores
+- Generated customer-facing reply
+- Escalation decision
+- Reason for the escalation or automated handling
 
-Type quit to exit the agent.
+Type `quit` to exit the agent.
 
-<h2>Reproduce the Evaluation</h2> <hr>
+<h2>Reproduce the Evaluation</h2>
+<hr>
 
 <strong>Intent classification</strong>
 
+```bash
 python evaluation/local_evaluation.py
+```
 
 <strong>Majority-class baseline</strong>
 
+```bash
 python evaluation/baseline_majority.py
+```
 
 <strong>TF-IDF + Logistic Regression baseline</strong>
 
+```bash
 python evaluation/baseline_tfidf.py
+```
 
 <strong>Historical retrieval evaluation</strong>
 
+```bash
 python evaluation/evaluate_retrieval.py
+```
 
 <strong>Reply generation and LLM-judge evaluation</strong>
 
+```bash
 python evaluation/evaluate_replies_groq.py
+```
 
-The reply evaluation requires the GROQ_API_KEY environment variable.
+The reply evaluation requires the `GROQ_API_KEY` environment variable.
 
 <strong>Human–LLM judge agreement</strong>
 
+```bash
 python evaluation/calculate_agreement.py
+```
 
 The evaluation scripts report the corresponding classification, retrieval, reply-quality, and human–LLM agreement metrics described in the report.
 
