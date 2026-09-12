@@ -199,7 +199,14 @@ From the repository root, run:
 python src/apple_support_agent.py
 ```
 
-Enter a customer message when prompted.
+Enter a customer query or issue...
+<strong>Example inputs</strong>
+
+You can try messages such as:
+
+- `My iPhone battery is draining very quickly`
+- `My My Apple Music keeps stopping while I’m listening to songs`
+- `I can't download anything from the App Store on my iPhone`
 
 <strong>The agent displays:</strong>
 
